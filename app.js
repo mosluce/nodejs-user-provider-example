@@ -1,9 +1,11 @@
 /**
- * Created by mosluce on 14/11/27.
+ * Created by mosluce on 14/11/28.
  */
-var express = require('express'), app = express();
-var port = process.env.PORT || 3000;
+var app = require('./settings/app');
+var models = require("./models");
 
-app.use(express.static(__dirname + '/public'));
-
-app.listen(port);
+models.sequelize.sync().success(function () {
+    var server = app.listen(app.get('port'), function() {
+        console.log("Server Started!");
+    });
+});
