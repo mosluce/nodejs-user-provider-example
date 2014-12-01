@@ -19,6 +19,16 @@ app.post('/login', function(req, res, next) {
             return;
         }
 
+        (new mssql.Request(conn)).query("select * from Zuser", function(err, recordset) {
+            if(err) {
+                error(res, err);
+                return;
+            }
+
+            res.json(recordset);
+        });
+
+        /*
         var ps = new mssql.PreparedStatement(conn);
         ps.input('username', mssql.NVarChar);
         ps.input('password', mssql.NVarChar);
@@ -49,6 +59,7 @@ app.post('/login', function(req, res, next) {
                 ps.unprepare();
             });
         });
+        */
     });
 });
 
