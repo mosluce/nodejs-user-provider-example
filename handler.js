@@ -5,7 +5,7 @@
 var express = require('express'), app = express(), mssql = require('mssql');
 var dbconfig = require('./configs/db');
 
-function error(res) {
+function error(res, err) {
     res.json({
         success: false,
         message: err
@@ -15,7 +15,7 @@ function error(res) {
 app.post('/login', function(req, res, next) {
     var conn = new mssql.Connection(dbconfig, function(err) {
         if(err) {
-            error(res);
+            error(res, err);
             return;
         }
 
