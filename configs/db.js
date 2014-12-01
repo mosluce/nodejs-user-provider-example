@@ -2,7 +2,7 @@
  * Created by mosluce on 14/12/1.
  */
 module.exports = (function() {
-    if(process.env.ACC_MSSQL_SERVER) {
+    if(process.env.NODE_ENV == 'production') {
         return {
             user: process.env.ACC_MSSQL_USER,
             password: process.env.ACC_MSSQL_PASSWORD,
