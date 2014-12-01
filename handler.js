@@ -8,7 +8,7 @@ var dbconfig = require('./configs/db');
 function error(res, err) {
     res.json({
         success: false,
-        message: JSON.stringify(err)
+        error: err
     });
 }
 
