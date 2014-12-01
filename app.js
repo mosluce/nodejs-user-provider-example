@@ -1,11 +1,14 @@
 /**
- * Created by mosluce on 14/11/28.
+ * Created by mosluce on 14/12/1.
  */
-var app = require('./settings/app');
-var models = require("./models");
+var express = require('express'), app = express(),
+    bodyParser = require('body-parser');
 
-models.sequelize.sync().success(function () {
-    var server = app.listen(app.get('port'), function() {
-        console.log("Server Started!");
-    });
-});
+var port = process.env.PORT || 3000;
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended:true}));
+
+app.use('/', require('./handler'));
+
+app.listen(port);
