@@ -85,7 +85,7 @@ app.post('/available', function(req, res) {
                     data: (recordset[0]['count'] > 0)
                 });
 
-                ps.unprepare();
+                ps.unprepare(); 
             });
         });
     });
