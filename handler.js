@@ -44,7 +44,10 @@ app.post('/login', function(req, res, next) {
 
                 res.json({
                     success: true,
-                    data: recordset[0]
+                    data: {
+                        userid: recordset[0].USERNO,
+                        username: recordset[0].USER_NAME
+                    }
                 });
 
                 ps.unprepare();
