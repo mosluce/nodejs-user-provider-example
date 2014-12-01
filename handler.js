@@ -3,7 +3,6 @@
  */
 
 var express = require('express'), app = express(), mssql = require('mssql');
-var dbconfig = require('./configs/db');
 
 function error(res, err) {
     res.json({
@@ -13,6 +12,11 @@ function error(res, err) {
 }
 
 app.post('/login', function(req, res, next) {
+    var dbconfig = require('./configs/db');
+
+    res.json(dbconfig);
+    return;
+
     var conn = new mssql.Connection(dbconfig, function(err) {
         if(err) {
             error(res, err);
