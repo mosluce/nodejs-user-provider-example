@@ -7,10 +7,7 @@ module.exports = (function() {
             user: process.env.ACC_MSSQL_USER,
             password: process.env.ACC_MSSQL_PASSWORD,
             server: process.env.ACC_MSSQL_SERVER,
-            database: process.env.ACC_MSSQL_DATABASE,
-            options: {
-                encrypt: true
-            }
+            database: process.env.ACC_MSSQL_DATABASE
         };
     } else {
         return require('./db_development.json');
