@@ -8,7 +8,7 @@ var dbconfig = require('./configs/db');
 function error(res, err) {
     res.json({
         success: false,
-        message: err
+        message: JSON.stringify(err)
     });
 }
 
@@ -26,7 +26,7 @@ app.post('/login', function(req, res, next) {
             "AND APSYSNO='EPURCSYS' " +
             "AND ZLEVEL!='00'", function(err) {
             if(err) {
-                error(res);
+                error(res, err);
                 return;
             }
 
@@ -35,7 +35,7 @@ app.post('/login', function(req, res, next) {
                 password: req.body.password
             }, function(err, recordset) {
                 if(err) {
-                    error(res);
+                    error(res, err);
                     return;
                 }
 
